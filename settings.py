@@ -78,6 +78,10 @@ TEMPLATE_DIRS = (
     path.join(PROJECT_ROOT, 'templates')
 )
 
+INTERNAL_IPS = ( '127.0.0.1', 
+                 '212.204.202.13',
+                 '213.211.166.226')
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
