@@ -1,6 +1,4 @@
-#!/usr/local/bin/bash
-source /usr/local/bin/use-django
-use-django r9067
+#!/bin/bash
 if [[ $1 != "" ]]; then
     python manage.py 7483
 else
