@@ -1,17 +1,19 @@
 from django.conf.urls.defaults import *
+from django.conf import settings
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
+
+if settings.DEBUG:
+    from os import path
+    urlpatterns = patterns('django.views', r'^static/(?P<path>.*)$', 'static.serve', {'document_root': path.join(settings.PROJECT_ROOT, 'static') }),
+else:
+    urlpatterns = patterns('')
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^architectural/', include('architectural.foo.urls')),
+    (r'^/', include('foo.urls')),
 
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
-    # to INSTALLED_APPS to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # (r'^admin/(.*)', admin.site.root),
+    # Django Admin
+    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    (r'^admin/(.*)', admin.site.root)
 )
