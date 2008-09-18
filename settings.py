@@ -85,6 +85,8 @@ INTERNAL_IPS = ( '127.0.0.1',
                  '213.211.166.226',
                  gethostbyname(gethostname()))
 
+TINYMCE_JS_URL = '/static/js/tiny_mce/tiny_mce.js'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -92,6 +94,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'django.contrib.flatpages'
+    'django.contrib.flatpages',
+    'tinymce',
 )
 
