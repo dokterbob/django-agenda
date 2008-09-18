@@ -17,6 +17,7 @@ else:
 urlpatterns += patterns('',
     #(r'^/', include('foo.urls')),
     (r'^tinymce/', include('tinymce.urls')),
+    (r'^comments/', include('django.contrib.comments.urls')),
 
     # Django Admin
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),

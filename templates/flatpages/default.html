@@ -3,4 +3,24 @@
 {% block htmltitle %}{{ flatpage.title }}{% endblock %}
 {% block title %}{{ flatpage.title }}{% endblock %}
 
-{% block content %}{{ flatpage.content }}{% endblock %}
+{% block content %}
+{{ flatpage.content }}
+{% load comments %}
+{% get_comment_list for flatpage as comment_list %}
+
+Reacties
+
+ {% if comment_list %} {% for comment in comment_list %}
+
+ {% if comment.user_url %}{% endif %}{{ comment.user_name }}{% if comment.user_url %}{% endif %} reageerde, op {{ comment.submit_date|date:"j F Y" }} om {{ comment.submit_date|date:"G:i" }} uur:
+
+ {{ comment.comment|linebreaks }}
+ {% endfor %} {% else %}
+
+ Er zijn nog geen reacties.
+
+ {% endif %}
+
+  Laat reactie achter {% render_comment_form for flatpage %} 
+
+{% endblock %}
