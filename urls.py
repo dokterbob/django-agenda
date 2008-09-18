@@ -11,7 +11,7 @@ else:
     urlpatterns = patterns('')
 
 urlpatterns = patterns('',
-    (r'^/', include('foo.urls')),
+    #(r'^/', include('foo.urls')),
 
     # Django Admin
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
