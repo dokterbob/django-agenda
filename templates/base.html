@@ -12,15 +12,15 @@
         {% endblock content %}
         {% if debug %}
         <h1>Debug</h1>
-        <table>
+        <table style="width:80em;">
             <tr>
                 <th>Time</th>
                 <th>SQL</th>
             </tr>
         {% for query in sql_queries %}
-            <tr>
-                <td>{{ time }}</td>
-                <td>{{ sql }}</td>
+            <tr style="background-color:{% cycle '#CCCCCC' '#DDDDDD' %};">
+                <td style="width:10em; background-color:{% cycle '' '' %};">{{ query.time }}</td>
+                <td><code>{{ query.sql }}</code></td>
             </tr>
         {% endfor %}
         </table>

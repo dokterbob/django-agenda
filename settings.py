@@ -78,9 +78,12 @@ TEMPLATE_DIRS = (
     path.join(PROJECT_ROOT, 'templates')
 )
 
+from socket import gethostname, gethostbyname
+
 INTERNAL_IPS = ( '127.0.0.1', 
                  '212.204.202.13',
-                 '213.211.166.226')
+                 '213.211.166.226',
+                 gethostbyname(gethostname()))
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -88,6 +91,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.flatpages'
 )
 
