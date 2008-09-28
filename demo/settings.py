@@ -3,6 +3,10 @@
 from os import path
 PROJECT_ROOT = path.dirname(__file__)
 
+# First, update the PYTHONPATH to find our dependencies
+import sys
+sys.path.append(path.join(PROJECT_ROOT,'..','deps'))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -69,6 +73,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'djangologging.middleware.LoggingMiddleware',
+    
 )
 
 ROOT_URLCONF = 'urls'
@@ -81,6 +88,18 @@ from socket import gethostname, gethostbyname
 
 INTERNAL_IPS = ( '127.0.0.1', 
                  gethostbyname(gethostname()))
+
+# djangologging
+LOGGING_OUTPUT_ENABLED = True
+LOGGING_LOG_SQL = False
+LOGGING_INTERCEPT_REDIRECTS = False
+
+# Log debug messages to standard output
+if DEBUG:
+    import logging
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s %(levelname)-8s %(message)s',
+                        datefmt='[%d/%b/%Y %H:%M:%S]')
 
 INSTALLED_APPS = (
     'django.contrib.auth',
