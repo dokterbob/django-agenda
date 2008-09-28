@@ -1,4 +1,4 @@
-The django-calendar app is a generic
+The django-agenda app is a generic
 implementation of a web-based calendar
 with events.
 
@@ -7,5 +7,5 @@ Eventual feautures will include:
 - Feeds
 - Sitemaps
 
-The django-calendar app is released 
+The django-agenda app is released 
 under the GPL version 3.

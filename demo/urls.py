@@ -13,5 +13,7 @@ else:
 urlpatterns += patterns('',
     # Django Admin
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    (r'^admin/(.*)', admin.site.root)
+    (r'^admin/(.*)', admin.site.root),
+    
+    (r'^/', include('agenda.urls')),
 )
