@@ -1,0 +1,7 @@
+*.o
+*.pyc
+.DS\_Store
+*.sqlite
+*.sw?
+demo/media
+
