@@ -1,0 +1,11 @@
+The django-calendar app is a generic
+implementation of a web-based calendar
+with events.
+
+Eventual feautures will include:
+- iCal/Google Calendar/Outlook export
+- Feeds
+- Sitemaps
+
+The django-calendar app is released 
+under the GPL version 3.
