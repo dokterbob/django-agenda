@@ -31,5 +31,7 @@ All requirements are currently included in the "deps" directory.
 - django-logging
 - django-representations
 
-:Author: Mathijs de Bruin <mathijs@visualspace.nl>
-:License: GPL version 3.
+License
+=======
+The django-agenda app is released 
+under the GPL version 3.
