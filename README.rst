@@ -6,14 +6,23 @@ with events.
 
 Status
 ======
-Django-agenda is currently not yet stable enough
+Django-agenda is currently *not yet* stable enough
 for production or any other use whatsoever.
 
-(Expected) Feautures
-====================
-- iCal/Google Calendar/Outlook export
-- Feeds
-- Sitemaps
+Feautures
+=========
+Currently
+---------
+- Slick & userfriendly admin interface.
+- Full event archive.
+
+Expected
+--------
+- Automatic author registration 'Posted by so-and-so'.
+- iCal/Google Calendar/Outlook export.
+- Feeds.
+- Sitemaps.
+- Browseable calendar.
 
 License
 =======
