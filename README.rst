@@ -6,14 +6,15 @@ with events.
 
 Status
 ======
-Django-agenda is currently *not yet* stable enough
+Django-agenda is currently **not yet stable enough**
 for production or any other use whatsoever.
 
 Feautures
 =========
-Currently
+Current
 ---------
 - Slick & userfriendly admin interface.
+- Skeleton demo application.
 - Full event archive.
 
 Expected
@@ -24,7 +25,11 @@ Expected
 - Sitemaps.
 - Browseable calendar.
 
-License
-=======
-The django-agenda app is released 
-under the GPL version 3.
+Requirements
+============
+All requirements are currently included in the "deps" directory.
+- django-logging
+- django-representations
+
+:Author: Mathijs de Bruin <mathijs@visualspace.nl>
+:License: GPL version 3.
