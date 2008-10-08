@@ -11,6 +11,8 @@ for production or any other use whatsoever.
 
 Feautures
 =========
+** SOMEHOW all the useful code got lost and I am
+swearing RIGHT NOW **
 Current
 ---------
 - Slick & userfriendly admin interface.
