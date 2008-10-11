@@ -6,7 +6,7 @@ admin.autodiscover()
 
 if settings.DEBUG:
     from os import path
-    urlpatterns = patterns('django.views', r'^static/(?P<path>.*)$', 'static.serve', {'document_root': path.join(settings.PROJECT_ROOT, 'static') }),
+    urlpatterns = patterns('django.views', (r'^static/(?P<path>.*)$', 'static.serve', {'document_root': path.join(settings.PROJECT_ROOT, 'static') }))
 else:
     urlpatterns = patterns('')
 
