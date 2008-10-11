@@ -1,11 +1,13 @@
 Starting a project based on this project
 ========================================
    git clone git://github.com/dokterbob/django-project-base.git <my_app>
+   
    git checkout -b <my_app>
 
 Updating your project from the base
 -----------------------------------
    git pull
+   
    git merge master
 
 Using this base project within another app
