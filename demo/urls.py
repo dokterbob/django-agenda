@@ -10,7 +10,7 @@ if settings.DEBUG:
 else:
     urlpatterns = patterns('')
 
-urlpatterns = patterns('',
+urlpatterns += patterns('',
     #(r'^/', include('foo.urls')),
 
     # Django Admin
