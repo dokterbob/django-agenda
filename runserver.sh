@@ -1,9 +1,4 @@
-#!/usr/local/bin/bash
-
-if [ -f /usr/local/bin/use-django ]; then
-    source /usr/local/bin/use-django
-    use-django r9067
-fi
+#!/bin/bash
 
 cd `dirname $BASH_SOURCE`
 

@@ -21,7 +21,7 @@ else:
     DATABASE_NAME = ''
     DATABASE_USER = ''             # Not used with sqlite3.
     DATABASE_PASSWORD = ''         # Not used with sqlite3.
-    DATABASE_HOST = 'mysql.visualspace.nl'             # Set to empty string for localhost. Not used with sqlite3.
+    DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
     DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
 # Local time zone for this installation. Choices can be found here:
@@ -81,8 +81,7 @@ TEMPLATE_DIRS = (
 # Consider ourself as internal IP
 from socket import gethostname, gethostbyname
 INTERNAL_IPS = ( '127.0.0.1', 
-                 gethostbyname(gethostname()),
-                 '213.211.166.226')
+                 gethostbyname(gethostname()),)
 
 # djangologging
 LOGGING_OUTPUT_ENABLED = True
