@@ -69,6 +69,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'djangologging.middleware.LoggingMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
@@ -77,9 +78,23 @@ TEMPLATE_DIRS = (
     path.join(PROJECT_ROOT, 'templates')
 )
 
+# Consider ourself as internal IP
+from socket import gethostname, gethostbyname
 INTERNAL_IPS = ( '127.0.0.1', 
-                 '212.204.202.13',
+                 gethostbyname(gethostname()),
                  '213.211.166.226')
+
+# djangologging
+LOGGING_OUTPUT_ENABLED = True
+LOGGING_LOG_SQL = False
+LOGGING_INTERCEPT_REDIRECTS = False
+
+# Log debug messages to standard output
+if DEBUG:
+    import logging
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s %(levelname)-8s %(message)s',
+                        datefmt='[%d/%b/%Y %H:%M:%S]')
 
 INSTALLED_APPS = (
     'django.contrib.auth',
