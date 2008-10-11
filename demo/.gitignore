@@ -1,0 +1,8 @@
+*.o
+*.pyc
+.DS\_Store
+*.sqlite
+*.sw?
+media
+portnumber
+

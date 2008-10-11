@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/33/trunk/djangologging/templates
+END
+redirect.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/27/trunk/djangologging/templates/redirect.html
+END
+logging.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/33/trunk/djangologging/templates/logging.html
+END
+logging.css
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/31/trunk/djangologging/templates/logging.css
+END
