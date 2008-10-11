@@ -3,6 +3,10 @@
 from os import path
 PROJECT_ROOT = path.dirname(__file__)
 
+# First, update the PYTHONPATH to find our dependencies
+import sys
+sys.path.append(path.join(PROJECT_ROOT,'..','deps'))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
