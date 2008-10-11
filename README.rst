@@ -13,8 +13,11 @@ Using this base project within another app
    git clone <my_app_url> <my_app>
 
    git remote add -f django-project-base git://github.com/dokterbob/django-project-base.git
+   
    git merge -s ours --no-commit django-project-base/master
+   
    git read-tree --prefix=demo/ -u django-project-base/master
+   
    git commit -m "Merge django-project-base project as demo"
 
 (This is the 'subtree merge strategy, see: 
