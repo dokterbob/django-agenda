@@ -1,6 +1,9 @@
 #!/usr/local/bin/bash
-source /usr/local/bin/use-django
-use-django r9067
+
+if [ -f /usr/local/bin/use-django ]; then
+    source /usr/local/bin/use-django
+    use-django r9067
+fi
 
 PWD=`pwd`
 BASEPATH=`basename $PWD`
