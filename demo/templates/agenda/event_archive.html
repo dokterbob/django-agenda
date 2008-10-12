@@ -6,11 +6,23 @@
     {% get_calendar for month year as calendar %}
     <table>
         <tr>
-            <th>&lt;</th>
+            <th>
+                {% if previous_month %} 
+                    <a href="blaat">&lt;</a> 
+                {% else %} 
+                    - 
+                {% endif %} 
+            </th>
             <th colspan="5">
                 {{ month }}-{{ year }}
             </th>
-            <th>&gt;</th>
+            <th>
+                {% if next_month %} 
+                    <a href="blaat">&gt;</a> 
+                {% else %} 
+                    - 
+                {% endif %}
+            </th>
         </tr>
     {% for week in calendar %}
         <tr>

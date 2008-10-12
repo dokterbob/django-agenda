@@ -1,6 +1,8 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from django.http import Http404, HttpResponse
 from django.template import loader, RequestContext
+
+from dateutil.relativedelta import relativedelta
 
 import logging 
 
@@ -19,19 +21,28 @@ def get_object_context(queryset, date_field, year, month=None, day=None):
     object_context = { 'years' : objects.dates(date_field, 'year') }
     objects = objects.filter(**{'%s__year' % date_field : int(year) })
     
-    object_context.update({'months'        : objects.dates(date_field, 'month'),
-                           'year'          : int(year) })
+    year = int(year)
+    object_context.update({'months'         : objects.dates(date_field, 'month'),
+                           'year'           : year,
+                           'previous_year'  : year-1,
+                           'next_year'      : year+1 })
 
     if month:
         objects = objects.filter(**{'%s__month' % date_field : int(month) })
         
-        object_context.update({'days'  : objects.dates(date_field, 'day'),
-                               'month' : int(month), })
+        month = int(month)
+        object_context.update({'days'           : objects.dates(date_field, 'day'),
+                               'month'          : month,
+                               'next_month'     : datetime(year, month, 1) + relativedelta(months=1),
+                               'previous_month' : datetime(year, month, 1) + relativedelta(months=-1)})
 
     if day:
         objects = objects.filter(**{'%s__month' % date_field : int(day) })
         
-        object_context.update({'day'   : int(day) })
+        day = int(day)
+        object_context.update({'day'           : day,
+                               'next_day'      : datetime(year, month, day) + relativedelta(days=1),
+                               'previous_day'  : datetime(year, month, day) + relativedelta(days=-1)})
     
     return objects, object_context
 
@@ -63,7 +74,7 @@ def archive(request, queryset, date_field,
     
     process_context(c, extra_context)
     
-    logging.debug('Rendering with context: %s', c)
+    #logging.debug('Rendering with context: %s', c)
     
     return HttpResponse(t.render(c), mimetype=mimetype)
 

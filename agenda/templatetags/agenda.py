@@ -74,4 +74,3 @@ def ifin(parser, token, negate):
 
 register.tag('ifdayin', lambda parser, token: ifin(parser, token, False))
 
-        
