@@ -8,7 +8,7 @@
         <tr>
             <th>
                 {% if previous_month %} 
-                    <a href="blaat">&lt;</a> 
+                    <a href="{% url agenda-archive-month previous_month.year previous_month.month %}">&lt;</a> 
                 {% else %} 
                     - 
                 {% endif %} 
@@ -18,7 +18,7 @@
             </th>
             <th>
                 {% if next_month %} 
-                    <a href="blaat">&gt;</a> 
+                    <a href="{% url agenda-archive-month next_month.year next_month.month %}">&gt;</a> 
                 {% else %} 
                     - 
                 {% endif %}
@@ -29,7 +29,7 @@
         {% for day in week %}
             {% ifequal day.month month %}
                 {% ifdayin day days %} 
-                    <td style="background:gray;color:red;">{{ day.day }}</td>
+                    <td style="background:gray;"><a href="{% url agenda-archive-day day.year day.month day.day %}">{{ day.day }}</a></td>
                 {% else %}
                     <td style="background:gray;">{{ day.day }}</td>
                 {% endifdayin %}
@@ -40,9 +40,13 @@
         </tr>
     {% endfor %}
     </table>
-{% else %}
-    {% for month in months %}
-        {% get_calendar for month.month month.year as calendar %}
-    {% endfor %}
 {% endif %}
+
+<table>
+{% for object in objects %}
+    <tr>
+        <td><a href="{% url agenda-detail object.event_date.year object.event_date.month object.event_date.day object.slug %}">{{ object }}</td>
+    </tr>
+{% endfor %}
+</table>
 {% endblock %}
