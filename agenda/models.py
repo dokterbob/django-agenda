@@ -5,10 +5,14 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 
+from django.conf import settings
+
 from django.contrib.auth.models import User
 
 from django.contrib.sites.models import Site
 from django.contrib.sites.managers import CurrentSiteManager
+
+from django.contrib.sitemaps import ping_google
 
 class Location(models.Model):
     class Meta:
@@ -66,3 +70,13 @@ class Event(models.Model):
     publish = models.BooleanField(_('publish'), default=True)
 
     sites = models.ManyToManyField(Site)
+    
+    def save(self):
+        super(Event, self).save()
+        if settings.DEBUG:
+            try:
+                ping_google()
+            except Exception:
+                import logging
+                logging.warn('Google ping on save did not work.')
+

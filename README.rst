@@ -1,3 +1,7 @@
+=============
+django-agenda
+=============
+
 What is it?
 ===========
 The django-agenda app is a generic
