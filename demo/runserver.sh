@@ -12,6 +12,8 @@ if [ ! -f portnumber ]; then
     exit -1
 fi
 
+find . -name '*.pyc' -o -name '*.pyo' | xargs -r rm -v
+
 if [[ $1 != "" ]]; then
     python manage.py $1
 else

@@ -1,0 +1,36 @@
+{% extends "agenda/base.html" %}
+{% load agenda %}
+
+{% block content %}
+{% if month %}
+    {% get_calendar for month year as calendar %}
+    <table>
+        <tr>
+            <th>&lt;</th>
+            <th colspan="5">
+                {{ month }}-{{ year }}
+            </th>
+            <th>&gt;</th>
+        </tr>
+    {% for week in calendar %}
+        <tr>
+        {% for day in week %}
+            {% ifequal day.month month %}
+                {% ifdayin day days %} 
+                    <td style="background:gray;color:red;">{{ day.day }}</td>
+                {% else %}
+                    <td style="background:gray;">{{ day.day }}</td>
+                {% endifdayin %}
+            {% else %}
+                <td>{{ day.day }}</td>            
+            {% endifequal %}
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    {% for month in months %}
+        {% get_calendar for month.month month.year as calendar %}
+    {% endfor %}
+{% endif %}
+{% endblock %}
