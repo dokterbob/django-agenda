@@ -39,10 +39,11 @@ class Event(models.Model):
         ordering = ['-event_date', '-start_time', '-title']
         get_latest_by = 'event_date'
         permissions = (("change_author", ugettext("Change author")),)
+        unique_together = ("event_date", "slug")
 
     def __unicode__(self):
         return _("%(title)s on %(event_date)s") % { 'title'      : self.title,
-                                                   'event_date' : self.event_date }
+                                                    'event_date' : self.event_date }
 
     @models.permalink                                               
     def get_absolute_url(self):
@@ -71,7 +72,7 @@ class Event(models.Model):
 
     # Extra fields
     add_date = models.DateTimeField(_('add date'),auto_now_add=True)
-    modify_date = models.DateTimeField(_('modification date'), auto_now=True)
+    mod_date = models.DateTimeField(_('modification date'), auto_now=True)
     
     author = models.ForeignKey(User, verbose_name=_('author'), db_index=True)
 
