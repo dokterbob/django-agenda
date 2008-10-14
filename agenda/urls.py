@@ -14,5 +14,5 @@ urlpatterns = patterns('agenda.views.date_based',
     url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$',                  'archive',       info_dict,  name='agenda-archive-day'),
     url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/$',                                   'archive',       info_dict,  name='agenda-archive-month'),
     url(r'^(?P<year>\d{4})/$',                                                      'archive',       info_dict,  name='agenda-archive-year'),
-    url(r'^$',                                                                      'index',         info_dict, name='agenda-index'),
+    url(r'^$',                                                                      'index',         info_dict,  name='agenda-index'),
 )
