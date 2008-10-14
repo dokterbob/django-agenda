@@ -10,6 +10,10 @@ if settings.DEBUG:
 else:
     urlpatterns = patterns('')
 
+from agenda.sitemaps import EventSitemap
+
+sitemaps = { 'events' : EventSitemap }
+
 urlpatterns += patterns('',
     (r'^', include('agenda.urls')),
 
@@ -19,4 +23,12 @@ urlpatterns += patterns('',
     
     # Comments support
     (r'^comments/', include('django.contrib.comments.urls')),
+    
+    # Sitemaps
+    (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
+
+    # Feeds
+    #(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
+
+    
 )
