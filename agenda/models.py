@@ -37,6 +37,7 @@ class Event(models.Model):
         verbose_name = _('event')
         verbose_name_plural = _('events')
         ordering = ['-event_date', '-start_time', '-title']
+        get_latest_by = 'event_date'
         permissions = (("change_author", ugettext("Change author")),)
 
     def __unicode__(self):
