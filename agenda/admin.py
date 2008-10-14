@@ -13,7 +13,7 @@ admin.site.register(Location, LocationAdmin)
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'event_date', 'start_time', 'location', 'publish')
-    list_display_links = ('event_date', 'start_time', 'title')
+    list_display_links = ('title', )
     list_filter = ('event_date', 'publish', 'author', 'location')
 
     date_hierarchy = 'event_date'
@@ -24,7 +24,7 @@ class EventAdmin(admin.ModelAdmin):
 
     fieldsets =  ((None, {'fields': ['title', 'slug', 'event_date', 'start_time', 'end_time', 'location', 'description',]}),
                   (_('Advanced options'), {'classes' : ('collapse',),
-                                           'fields'  : ('publish_date', 'publish', 'sites', 'author')}))
+                                           'fields'  : ('publish_date', 'publish', 'sites', 'author', 'allow_comments')}))
     
     # This is a dirty hack, this belongs inside of the model but defaults don't work on M2M
     def formfield_for_dbfield(self, db_field, **kwargs):

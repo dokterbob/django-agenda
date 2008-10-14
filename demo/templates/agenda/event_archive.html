@@ -1,4 +1,5 @@
 {% extends "agenda/base.html" %}
+{% load comments %}
 {% load agenda %}
 
 {% block content %}
@@ -93,6 +94,22 @@
         <div class="event_description">
             {{ event.description }}
         </div>
+        {% if event.allow_comments %}
+        <div class="event_comments">
+            {% get_comment_list for event as comment_list %}
+
+            {% if comment_list %}
+                <h2>Comments</h2>
+                {% for comment in comment_list %}
+                    {{ comment }}
+                {% endfor %}
+            {% endif %}
+            <div class="event_comments_form">
+                <h2>Leave comment</h2>
+                {% render_comment_form for event %}
+            </div>
+        </div>
+        {% endif %}
     </div>
 {% endif %}
 {% endblock %}

@@ -69,6 +69,8 @@ class Event(models.Model):
 
     publish_date = models.DateTimeField(_('publication date'), default=datetime.now())
     publish = models.BooleanField(_('publish'), default=True)
+    
+    allow_comments = models.BooleanField(_('Allow comments'), default=True)
 
     sites = models.ManyToManyField(Site)
     
