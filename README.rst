@@ -11,31 +11,36 @@ with events.
 Status
 ======
 Django-agenda is currently **not yet stable enough**
-for production or any other use whatsoever.
+for production use *but* it can be fun to play around with.
 
 Feautures
 =========
-** SOMEHOW all the useful code got lost and I am
-swearing RIGHT NOW **
+*** I've managed to restore the code in just a few days! Woohoo! ***
 Current
 ---------
-- Slick & userfriendly admin interface.
-- Skeleton demo application.
-- Full event archive.
+- Full post-1.0 support, currently used on Django trunk.
+- Kind admin interface with automatic author assignment (Django User).
+- More elegant date_based generic view implementation. Finally you get all the info a decent archive will require. 
+- Demo project with very basic templates.
+- Event archive.
+- Browseable calendar based on Python's calendar module.
+- django.contrib.comments support
+- django.contrib.sites support (with default value in admin)
 
 Expected
 --------
-- Automatic author registration 'Posted by so-and-so'.
-- iCal/Google Calendar/Outlook export.
-- Feeds.
+- vCard iCal/Google Calendar/Outlook export (lying around from an older project).
+- Event feeds.
 - Sitemaps.
-- Browseable calendar.
+
+Future
+------
+- User event suggestions: users can submit events to the app.
 
 Requirements
 ============
 All requirements are currently included in the "deps" directory.
 - django-logging
-- django-representations
 
 License
 =======
