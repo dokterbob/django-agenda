@@ -19,7 +19,7 @@ def get_object_context(queryset, date_field, year, month=None, day=None):
     
     logging.debug('Fetching context and objects for %s %s %s of %s.' % (year, month, day, date_field))
     
-    objects = queryset.order_by('-%s' % date_field)
+    objects = queryset.order_by('%s' % date_field)
     
     object_context = { 'years' : objects.dates(date_field, 'year') }
     
@@ -54,6 +54,20 @@ def get_object_context(queryset, date_field, year, month=None, day=None):
     logging.debug('Returning objects %s' % objects)
     logging.debug('Returning context %s' % object_context)
     return objects, object_context
+    
+def get_next_object(my_object, date_field):
+    get_next = getattr(my_object, 'get_next_by_%s' % date_field)
+    try:
+        return get_next()
+    except my_object.DoesNotExist:
+        return None
+
+def get_previous_object(my_object, date_field):
+    get_previous = getattr(my_object, 'get_previous_by_%s' % date_field)
+    try:
+        return get_previous()
+    except my_object.__class__.DoesNotExist:
+        return None
 
 def archive(request, queryset, date_field, 
             year, month=None, day=None, 
@@ -106,26 +120,29 @@ def object_detail(request, queryset, date_field,
                   template_name=None, template_object_name='object', template_loader=loader,
                   extra_context=None,
                   mimetype=None, context_processors=None):
-                  # Get our model from the queryset
-                  model = queryset.model
+    # Get our model from the queryset
+    model = queryset.model
 
-                  # Process parameters
-                  if not extra_context:
-                      extra_context = {}
-                  if not template_name:
-                      template_name = "%s/%s_archive.html" % (model._meta.app_label, model._meta.object_name.lower())
+    # Process parameters
+    if not extra_context:
+      extra_context = {}
+    if not template_name:
+      template_name = "%s/%s_archive.html" % (model._meta.app_label, model._meta.object_name.lower())
 
-                  # Get relevant context (objects and dates)
-                  objects, object_context = get_object_context(queryset, date_field, year, month, day)
-                  if not objects:
-                      raise Http404, "No %s available" % model._meta.verbose_name
+    # Get relevant context (objects and dates)
+    objects, object_context = get_object_context(queryset, date_field, year, month, day)
+    if not objects:
+      raise Http404, "No %s available" % model._meta.verbose_name
 
-                  object_context.update({ template_object_name : objects[0] })        
+    my_object = objects[0]
+    object_context.update({ template_object_name : my_object,
+                          'next_%s' % template_object_name : get_next_object(my_object, date_field),
+                          'previous_%s' % template_object_name : get_previous_object(my_object, date_field) })        
 
-                  # Get a template, RequestContext and render
-                  t = template_loader.get_template(template_name)
-                  c = RequestContext(request, object_context, context_processors)
+    # Get a template, RequestContext and render
+    t = template_loader.get_template(template_name)
+    c = RequestContext(request, object_context, context_processors)
 
-                  process_context(c, extra_context)
+    process_context(c, extra_context)
 
-                  return HttpResponse(t.render(c), mimetype=mimetype)
+    return HttpResponse(t.render(c), mimetype=mimetype)

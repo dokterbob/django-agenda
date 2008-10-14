@@ -83,11 +83,11 @@
 
 {% if event %}
     <div class="event">
-        {% if event.get_next_by_event_date.event_date %}
-        <a href="{% url agenda-detail event.get_next_by_event_date.event_date.year event.get_next_by_event_date.event_date.month event.get_next_by_event_date.event_date.day event.get_next_by_event_date.slug %}">Next: {{ event.get_next_by_event_date }}</a>
-        {% endif %}
-        {% if event.get_previous_by_event_date.event_date %}
-        <a href="{% url agenda-detail event.get_previous_by_event_date.event_date.year event.get_previous_by_event_date.event_date.month event.get_previous_by_event_date.event_date.day event.get_previous_by_event_date.slug %}">Previous: {{ event.get_previous_by_event_date }}</a>
+        {% if next_event %}
+        <a href="{% url agenda-detail next_event.event_date.year next_event.event_date.month next_event.event_date.day next_event.slug %}">Next: {{ next_event }}</a> 
+        {% endif %} 
+        {% if previous_event %} 
+        <a href="{% url agenda-detail previous_event.event_date.year previous_event.event_date.month previous_event.event_date.day previous_event.slug %}">Previous: {{ previous_event }}</a> 
         {% endif %}
         <h1>Event: {{ event.slug }}</h1>
         {% if event.start_time %}
