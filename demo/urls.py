@@ -11,8 +11,14 @@ else:
     urlpatterns = patterns('')
 
 from agenda.sitemaps import EventSitemap
+from agenda.feeds import EventFeed
 
+from django.contrib.comments.feeds import LatestCommentFeed
+    
 sitemaps = { 'events' : EventSitemap }
+
+feeds = { 'events'   : EventFeed, 
+          'comments' : LatestCommentFeed }
 
 urlpatterns += patterns('',
     (r'^', include('agenda.urls')),
@@ -25,10 +31,8 @@ urlpatterns += patterns('',
     (r'^comments/', include('django.contrib.comments.urls')),
     
     # Sitemaps
-    (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
+    (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 
     # Feeds
-    #(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
-
-    
+    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
 )
