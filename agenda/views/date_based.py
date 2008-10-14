@@ -1,11 +1,11 @@
-from datetime import datetime
-from django.http import Http404, HttpResponse
-from django.template import loader, RequestContext
+import logging 
+
+from datetime import datetime, timedelta
 
 from dateutil.relativedelta import relativedelta
 
-import logging 
-
+from django.http import Http404, HttpResponse
+from django.template import loader, RequestContext
 
 def process_context(context, extra_context):
     for key, value in extra_context.items():
@@ -91,7 +91,15 @@ def index(request, queryset, date_field,
           template_name=None, template_object_name='object', template_loader=loader,
           num_objects=5, extra_context=None,
           mimetype=None, context_processors=None):
-    pass
+    
+    now = datetime.now()      
+    queryset = queryset.filter(event_date__gte=now - timedelta(days=1))
+    
+    return archive(request, queryset, date_field, 
+                   now.year, now.month, None, 
+                   template_name, template_object_name, template_loader,
+                   num_objects, extra_context, True,
+                   mimetype, context_processors)
     
 def object_detail(request, queryset, date_field, 
                   year, month, day, slug, 
