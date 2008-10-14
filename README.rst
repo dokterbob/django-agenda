@@ -10,12 +10,13 @@ with events.
 
 Status
 ======
-Django-agenda is currently **not yet stable enough**
-for production use *but* it can be fun to play around with.
+Django-agenda is currently stable enough for beta testing.
+As much as I would love people using it right now, I have not
+taken it into production myself and therefore would not swear
+over its stability.
 
 Feautures
 =========
-*** I've managed to restore the code in just a few days! Woohoo! ***
 Current
 ---------
 - Full post-1.0 support, currently used on Django trunk.
@@ -26,12 +27,12 @@ Current
 - Browseable calendar based on Python's calendar module.
 - django.contrib.comments support
 - django.contrib.sites support (with default value in admin)
+- Event and comment feeds.
+- Sitemaps.
 
 Expected
 --------
 - vCard iCal/Google Calendar/Outlook export (lying around from an older project).
-- Event feeds.
-- Sitemaps.
 
 Future
 ------
