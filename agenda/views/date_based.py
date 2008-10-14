@@ -42,7 +42,7 @@ def get_object_context(queryset, date_field, year, month=None, day=None):
 
     if day:
         day = int(day)
-        objects = objects.filter(**{'%s__month' % date_field : day })
+        objects = objects.filter(**{'%s__day' % date_field : day })
         
         object_context.update({'day'           : day,
                                'next_day'      : datetime(year, month, day) + relativedelta(days=1),

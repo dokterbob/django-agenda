@@ -89,7 +89,7 @@ INTERNAL_IPS = ( '127.0.0.1',
 
 # djangologging
 LOGGING_OUTPUT_ENABLED = True
-LOGGING_LOG_SQL = False
+LOGGING_LOG_SQL = True
 LOGGING_INTERCEPT_REDIRECTS = False
 
 # Log debug messages to standard output
