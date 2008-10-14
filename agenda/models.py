@@ -43,6 +43,14 @@ class Event(models.Model):
     def __unicode__(self):
         return _("%(title)s on %(event_date)s") % { 'title'      : self.title,
                                                    'event_date' : self.event_date }
+
+    @models.permalink                                               
+    def get_absolute_url(self):
+        return ('agenda-detail', (), {
+                  'year'  : self.event_date.year, 
+                  'month' : self.event_date.month, 
+                  'day'   : self.event_date.day, 
+                  'slug'  : self.slug })
         
     objects = models.Manager()
     on_site = CurrentSiteManager()
@@ -76,7 +84,7 @@ class Event(models.Model):
     
     def save(self):
         super(Event, self).save()
-        if settings.DEBUG:
+        if not settings.DEBUG:
             try:
                 ping_google()
             except Exception:
