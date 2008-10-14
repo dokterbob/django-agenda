@@ -1,6 +1,6 @@
 *.o
 *.pyc
-.DS\_Store
+.DS_Store
 *.sqlite
 *.sw?
 demo/media
