@@ -4,8 +4,9 @@ from django.conf.urls.defaults import *
 from models import *
 
 info_dict = {
-    'queryset'    : Event.published.all(),
-    'date_field'  : 'event_date'
+    'queryset'                  : Event.published.all(),
+    'date_field'                : 'event_date',
+    'template_object_name'      : 'event',
 }
 
 urlpatterns = patterns('agenda.views.date_based',

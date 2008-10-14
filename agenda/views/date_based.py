@@ -15,7 +15,10 @@ def process_context(context, extra_context):
             context[key] = value
 
 def get_object_context(queryset, date_field, year, month=None, day=None):
-    # Fetch relevant objects
+    """ Fetch relevant objects """
+    
+    logging.debug('Fetching context and objects for %s %s %s of %s.' % (year, month, day, date_field))
+    
     objects = queryset.order_by('-%s' % date_field)
     
     object_context = { 'years' : objects.dates(date_field, 'year') }
@@ -35,7 +38,7 @@ def get_object_context(queryset, date_field, year, month=None, day=None):
         objects = objects.filter(**{'%s__month' % date_field : month })
         
         object_context.update({'days'           : objects.dates(date_field, 'day'),
-                               'month'          : month,
+                               'month'          : datetime(year, month, 1),
                                'next_month'     : datetime(year, month, 1) + relativedelta(months=1),
                                'previous_month' : datetime(year, month, 1) + relativedelta(months=-1)})
     logging.debug('Returning context %s' % object_context)
@@ -44,7 +47,7 @@ def get_object_context(queryset, date_field, year, month=None, day=None):
         day = int(day)
         objects = objects.filter(**{'%s__day' % date_field : day })
         
-        object_context.update({'day'           : day,
+        object_context.update({'day'           : datetime(year, month, day),
                                'next_day'      : datetime(year, month, day) + relativedelta(days=1),
                                'previous_day'  : datetime(year, month, day) + relativedelta(days=-1)})
     
@@ -54,7 +57,7 @@ def get_object_context(queryset, date_field, year, month=None, day=None):
 
 def archive(request, queryset, date_field, 
             year, month=None, day=None, 
-            template_name=None, template_object_list_name='objects', template_loader=loader,
+            template_name=None, template_object_name='object', template_loader=loader,
             num_objects=5, extra_context=None, allow_empty=True,
             mimetype=None, context_processors=None):
 
@@ -71,8 +74,10 @@ def archive(request, queryset, date_field,
     objects, object_context = get_object_context(queryset, date_field, year, month, day)
     if not objects and not allow_empty:
         raise Http404, "No %s available" % model._meta.verbose_name
-        
-    object_context.update({ template_object_list_name : objects[:num_objects] })        
+    
+    logging.debug('Objects %s' % objects[:num_objects])
+    logging.debug('Context object list name %s ' % ('%s_list' % template_object_name))
+    object_context.update({ '%s_list' % template_object_name : objects[:num_objects] })        
 
     # Get a template, RequestContext and render
     t = template_loader.get_template(template_name)
@@ -83,7 +88,7 @@ def archive(request, queryset, date_field,
     return HttpResponse(t.render(c), mimetype=mimetype)
 
 def index(request, queryset, date_field, 
-          template_name=None, template_object_list_name='objects', template_loader=loader,
+          template_name=None, template_object_name='object', template_loader=loader,
           num_objects=5, extra_context=None,
           mimetype=None, context_processors=None):
     pass
@@ -107,7 +112,7 @@ def object_detail(request, queryset, date_field,
                   if not objects:
                       raise Http404, "No %s available" % model._meta.verbose_name
 
-                  object_context.update({ template_object_list_name : objects[:num_objects] })        
+                  object_context.update({ template_object_name : objects[0] })        
 
                   # Get a template, RequestContext and render
                   t = template_loader.get_template(template_name)
