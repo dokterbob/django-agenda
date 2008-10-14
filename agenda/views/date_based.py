@@ -19,9 +19,10 @@ def get_object_context(queryset, date_field, year, month=None, day=None):
     objects = queryset.order_by('-%s' % date_field)
     
     object_context = { 'years' : objects.dates(date_field, 'year') }
-    objects = objects.filter(**{'%s__year' % date_field : int(year) })
     
     year = int(year)
+    objects = objects.filter(**{'%s__year' % date_field : year })
+    
     object_context.update({'months'         : objects.dates(date_field, 'month'),
                            'year'           : year,
                            'previous_year'  : year-1,
@@ -30,9 +31,9 @@ def get_object_context(queryset, date_field, year, month=None, day=None):
     logging.debug('Returning context %s' % object_context)
 
     if month:
-        objects = objects.filter(**{'%s__month' % date_field : int(month) })
-        
         month = int(month)
+        objects = objects.filter(**{'%s__month' % date_field : month })
+        
         object_context.update({'days'           : objects.dates(date_field, 'day'),
                                'month'          : month,
                                'next_month'     : datetime(year, month, 1) + relativedelta(months=1),
@@ -40,9 +41,9 @@ def get_object_context(queryset, date_field, year, month=None, day=None):
     logging.debug('Returning context %s' % object_context)
 
     if day:
-        objects = objects.filter(**{'%s__month' % date_field : int(day) })
-        
         day = int(day)
+        objects = objects.filter(**{'%s__month' % date_field : day })
+        
         object_context.update({'day'           : day,
                                'next_day'      : datetime(year, month, day) + relativedelta(days=1),
                                'previous_day'  : datetime(year, month, day) + relativedelta(days=-1)})
