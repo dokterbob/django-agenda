@@ -3,6 +3,5 @@
 {% block htmlheader %}
     <link rel="alternate" type="application/rss+xml" title="Upcoming events" href="{% url django.contrib.syndication.views.feed "events" %}" />
     <link rel="alternate" type="application/rss+xml" title="Latest comments" href="{% url django.contrib.syndication.views.feed "comments" %}" />
-
 {% endblock %}
 {% block htmltitle %}Agenda application{% endblock %}
