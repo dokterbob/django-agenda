@@ -29,19 +29,18 @@ Current
 - django.contrib.sites support (with default value in admin)
 - Event and comment feeds.
 - Sitemaps.
-
-Expected
---------
-- vCard iCal/Google Calendar/Outlook export (lying around from an older project).
+- Fully localizable; all strings are translatable.
+- vCard iCalendar export, timezone aware and all!
 
 Future
 ------
-- User event suggestions: users can submit events to the app.
+- User events.
 
 Requirements
 ============
 All requirements are currently included in the "deps" directory.
 - django-logging
+- vobject
 
 License
 =======
