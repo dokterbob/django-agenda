@@ -114,7 +114,7 @@ def index(request, queryset, date_field,
                    template_name, template_object_name, template_loader,
                    num_objects, extra_context, True,
                    mimetype, context_processors)
-    
+
 def object_detail(request, queryset, date_field, 
                   year, month, day, slug, 
                   template_name=None, template_object_name='object', template_loader=loader,

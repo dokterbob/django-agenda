@@ -16,3 +16,17 @@ urlpatterns = patterns('agenda.views.date_based',
     url(r'^(?P<year>\d{4})/$',                                                      'archive',       info_dict,  name='agenda-archive-year'),
     url(r'^$',                                                                      'index',         info_dict,  name='agenda-index'),
 )
+
+ical_dict = {
+    'queryset'                  : info_dict['queryset'],
+    'date_field'                : info_dict['date_field'],
+    'ical_filename'              : 'calendar.ics',
+    'last_modified_field'       : 'mod_date',
+    'location_field'            : 'location',
+    'start_time_field'          : 'start_time',
+    'end_time_field'            : 'end_time',
+}
+
+urlpatterns += patterns('agenda.views.vobject_django',
+    url(r'^calendar.ics$',                                                          'icalendar',     ical_dict,  name='agenda-icalendar'),
+)
