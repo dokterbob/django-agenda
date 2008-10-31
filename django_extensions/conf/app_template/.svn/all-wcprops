@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/94/trunk/django_extensions/conf/app_template
+END
+views.py.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/94/trunk/django_extensions/conf/app_template/views.py.tmpl
+END
+__init__.py.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/94/trunk/django_extensions/conf/app_template/__init__.py.tmpl
+END
+models.py.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/94/trunk/django_extensions/conf/app_template/models.py.tmpl
+END
+urls.py.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/94/trunk/django_extensions/conf/app_template/urls.py.tmpl
+END
+forms.py.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/94/trunk/django_extensions/conf/app_template/forms.py.tmpl
+END

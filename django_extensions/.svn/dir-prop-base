@@ -1,0 +1,12 @@
+K 10
+svn:ignore
+V 58
+*.pyc
+
+*.pyc
+
+management/*.pyc
+
+management/commands/*.pyc
+
+END

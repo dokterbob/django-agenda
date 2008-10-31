@@ -1,0 +1,40 @@
+8
+
+dir
+156
+http://django-command-extensions.googlecode.com/svn/trunk/django_extensions/db/fields
+http://django-command-extensions.googlecode.com/svn
+
+
+
+2008-09-04T17:12:35.047092Z
+127
+v.oostveen
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+70537768-783f-0410-b1a0-8399f7a62752
+
+__init__.py
+file
+
+
+
+
+2008-10-31T10:27:53.000000Z
+ff2021ac3ec12a64a35f0176807f69f1
+2008-09-04T17:12:35.047092Z
+127
+v.oostveen
+

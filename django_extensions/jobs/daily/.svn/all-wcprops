@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/98/trunk/django_extensions/jobs/daily
+END
+daily_cleanup.py
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/94/trunk/django_extensions/jobs/daily/daily_cleanup.py
+END
+cache_cleanup.py
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/94/trunk/django_extensions/jobs/daily/cache_cleanup.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/94/trunk/django_extensions/jobs/daily/__init__.py
+END

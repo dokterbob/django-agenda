@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/119/trunk/django_extensions/templatetags
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/114/trunk/django_extensions/templatetags/__init__.py
+END
+syntax_color.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/116/trunk/django_extensions/templatetags/syntax_color.py
+END
+truncate_letters.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/119/trunk/django_extensions/templatetags/truncate_letters.py
+END

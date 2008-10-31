@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/94/trunk/django_extensions/conf/jobs_template/jobs
+END
+__init__.py.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/94/trunk/django_extensions/conf/jobs_template/jobs/__init__.py.tmpl
+END
+sample.py.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/94/trunk/django_extensions/conf/jobs_template/jobs/sample.py.tmpl
+END

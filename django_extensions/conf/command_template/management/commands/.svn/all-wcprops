@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/94/trunk/django_extensions/conf/command_template/management/commands
+END
+__init__.py.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/94/trunk/django_extensions/conf/command_template/management/commands/__init__.py.tmpl
+END
+sample.py.tmpl
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/94/trunk/django_extensions/conf/command_template/management/commands/sample.py.tmpl
+END
