@@ -1,0 +1,64 @@
+8
+
+dir
+156
+http://django-command-extensions.googlecode.com/svn/trunk/django_extensions/conf/jobs_template/jobs
+http://django-command-extensions.googlecode.com/svn
+
+
+
+2008-08-09T15:06:09.920616Z
+94
+v.oostveen
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+70537768-783f-0410-b1a0-8399f7a62752
+
+weekly
+dir
+
+__init__.py.tmpl
+file
+
+
+
+
+2008-10-31T10:27:53.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2008-05-28T18:47:10.360357Z
+47
+v.oostveen
+
+daily
+dir
+
+hourly
+dir
+
+sample.py.tmpl
+file
+
+
+
+
+2008-10-31T10:27:53.000000Z
+f59ed8c9dc7383790a63a14fae2ada80
+2008-08-09T15:06:09.920616Z
+94
+v.oostveen
+
+monthly
+dir
+

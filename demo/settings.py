@@ -108,6 +108,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'django.contrib.sitemaps',
     'django.contrib.syndication',
+    'django_extensions',
     'agenda'
 )
 

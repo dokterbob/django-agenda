@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/119/trunk/django_extensions/utils
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/100/trunk/django_extensions/utils/__init__.py
+END
+text.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/119/trunk/django_extensions/utils/text.py
+END
+uuid.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/100/trunk/django_extensions/utils/uuid.py
+END
