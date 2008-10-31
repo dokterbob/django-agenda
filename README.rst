@@ -34,7 +34,12 @@ Current
 
 Future
 ------
-- User events.
+- User contributed events.
+- Repeated events
+
+Models
+======
+.. image:: graph_models.png
 
 Requirements
 ============
