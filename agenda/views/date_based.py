@@ -14,7 +14,7 @@ def process_context(context, extra_context):
         else:
             context[key] = value
 
-def get_object_context(queryset, date_field, year, month=None, day=None):
+def get_object_context(queryset, date_field, year, month=None, day=None, slug=None):
     """ Fetch relevant objects """
     
     logging.debug('Fetching context and objects for %s %s %s of %s.' % (year, month, day, date_field))
@@ -53,6 +53,10 @@ def get_object_context(queryset, date_field, year, month=None, day=None):
     
     logging.debug('Returning objects %s' % objects)
     logging.debug('Returning context %s' % object_context)
+
+    if slug:
+        objects = objects.filter(slug_contains=slug)
+    logging.debug('Returning context %s' % object_context)
     return objects, object_context
     
 def get_next_object(my_object, date_field):
@@ -85,7 +89,7 @@ def archive(request, queryset, date_field,
         template_name = "%s/%s_archive.html" % (model._meta.app_label, model._meta.object_name.lower())
 
     # Get relevant context (objects and dates)
-    objects, object_context = get_object_context(queryset, date_field, year, month, day)
+    objects, object_context = get_object_context(queryset, date_field, year, month, day, slug)
     if not objects and not allow_empty:
         raise Http404, "No %s available" % model._meta.verbose_name
     
@@ -130,7 +134,7 @@ def object_detail(request, queryset, date_field,
       template_name = "%s/%s_archive.html" % (model._meta.app_label, model._meta.object_name.lower())
 
     # Get relevant context (objects and dates)
-    objects, object_context = get_object_context(queryset, date_field, year, month, day)
+    objects, object_context = get_object_context(queryset, date_field, year, month, day, slug)
     if not objects:
       raise Http404, "No %s available" % model._meta.verbose_name
 
