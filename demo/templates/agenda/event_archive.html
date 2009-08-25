@@ -46,15 +46,15 @@
     </div>
 {% endif %}
 
+<div class="header">
 {% if month %}
-    <div class"header">
         {% if day %}
             <h1>{{ day|date:"D d M Y"}}</h1>
         {% else %}
             <h1>{{ month|date:"M Y"}}</h1>
         {% endif %}
     {% else %}
-        <a href="{% url agenda-archive-year previous_year %}">{{ previous_year }}</a> 
+        <a href="{% url agenda-archive-year previous_year %}">{{ previous_year }}</a>
         <a href="{% url agenda-archive-year next_year %}">{{ next_year }}</a>
         <h1>{{ year }}</h1>
         {% if months %}
@@ -64,8 +64,8 @@
             {% endfor %}
             </ul>
         {% endif %}
-    </div>
 {% endif %}
+</div>
 
 {% if event_list %}
     <div class="events">
