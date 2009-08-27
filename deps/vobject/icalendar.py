@@ -777,21 +777,26 @@ class MultiTextBehavior(behavior.Behavior):
     After transformation, value is a list of strings.
     
     """
+    listSeparator = ","
 
-    @staticmethod
-    def decode(line):
+    @classmethod
+    def decode(cls, line):
         """Remove backslash escaping from line.value, then split on commas."""
         if line.encoded:
-            line.value = stringToTextValues(line.value)
+            line.value = stringToTextValues(line.value,
+                listSeparator=cls.listSeparator)
             line.encoded=False
     
-    @staticmethod
-    def encode(line):
+    @classmethod
+    def encode(cls, line):
         """Backslash escape line.value."""
         if not line.encoded:
-            line.value = ','.join(backslashEscape(val) for val in line.value)
+            line.value = cls.listSeparator.join(backslashEscape(val) for val in line.value)
             line.encoded=True
     
+
+class SemicolonMultiTextBehavior(MultiTextBehavior):
+    listSeparator = ";"
 
 #------------------------ Registered Behavior subclasses -----------------------
 class VCalendar2_0(VCalendarComponentBehavior):
@@ -1481,11 +1486,12 @@ registerBehavior(MultiDateBehavior, 'EXDATE')
 
 textList = ['CALSCALE', 'METHOD', 'PRODID', 'CLASS', 'COMMENT', 'DESCRIPTION',
             'LOCATION', 'STATUS', 'SUMMARY', 'TRANSP', 'CONTACT', 'RELATED-TO',
-            'UID', 'ACTION', 'REQUEST-STATUS', 'BUSYTYPE']
+            'UID', 'ACTION', 'BUSYTYPE']
 map(lambda x: registerBehavior(TextBehavior, x), textList)
 
 multiTextList = ['CATEGORIES', 'RESOURCES']
 map(lambda x: registerBehavior(MultiTextBehavior, x), multiTextList)
+registerBehavior(SemicolonMultiTextBehavior, 'REQUEST-STATUS')
 
 #------------------------ Serializing helper functions -------------------------
 
@@ -1602,7 +1608,9 @@ def stringToDateTime(s, tzinfo=None):
     return datetime.datetime(year, month, day, hour, minute, second, 0, tzinfo)
 
 
-escapableCharList = "\\;,Nn"
+# DQUOTE included to work around iCal's penchant for backslash escaping it,
+# although it isn't actually supposed to be escaped according to rfc2445 TEXT
+escapableCharList = '\\;,Nn"'
 
 def stringToTextValues(s, listSeparator=',', charList=None, strict=False):
     """Returns list of strings."""
@@ -1624,7 +1632,7 @@ def stringToTextValues(s, listSeparator=',', charList=None, strict=False):
     charIterator = enumerate(s)
     state        = "read normal"
 
-    current = ""
+    current = []
     results = []
 
     while True:
@@ -1638,28 +1646,30 @@ def stringToTextValues(s, listSeparator=',', charList=None, strict=False):
                 state = "read escaped char"
             elif char == listSeparator:
                 state = "read normal"
+                current = "".join(current)
                 results.append(current)
-                current = ""
+                current = []
             elif char == "eof":
                 state = "end"
             else:
                 state = "read normal"
-                current = current + char
+                current.append(char)
 
         elif state == "read escaped char":
             if escapableChar(char):
                 state = "read normal"
                 if char in 'nN': 
-                    current = current + '\n'
+                    current.append('\n')
                 else:
-                    current = current + char
+                    current.append(char)
             else:
                 state = "read normal"
                 # leave unrecognized escaped characters for later passes
-                current = current + '\\' + char 
+                current.append('\\' + char)
 
         elif state == "end":    #an end state
-            if current != "" or len(results) == 0:
+            if len(current) or len(results) == 0:
+                current = "".join(current)
                 results.append(current)
             return results
 

@@ -590,7 +590,7 @@ class Component(VBase):
         """Set behavior if one matches name, versionLine.value."""
         v=getBehavior(self.name, versionLine.value)
         if v: self.setBehavior(v)
-        
+
     def transformChildrenToNative(self):
         """Recursively replace children with their native representation."""
         #sort to get dependency order right, like vtimezone before vevent
@@ -1047,6 +1047,10 @@ def readComponents(streamOrString, validate=False, transform=True,
                         component=stack.pop()
                         if versionLine is not None:
                             component.setBehaviorFromVersionLine(versionLine)
+                        else:
+                            behavior = getBehavior(component.name)
+                            if behavior:
+                                component.setBehavior(behavior)
                         if validate: component.validate(raiseException=True)
                         if transform: component.transformChildrenToNative()
                         yield component #EXIT POINT
@@ -1105,8 +1109,8 @@ def getBehavior(name, id=None):
             for n, behavior in __behaviorRegistry[name]:
                 if n==id:
                     return behavior
-        else:
-            return __behaviorRegistry[name][0][1]
+
+        return __behaviorRegistry[name][0][1]
     return None
 
 def newFromBehavior(name, id=None):
@@ -1132,4 +1136,4 @@ def backslashEscape(s):
 #------------------- Testing and running functions -----------------------------
 if __name__ == '__main__':
     import tests
-    tests._test()   
+    tests._test()
