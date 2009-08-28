@@ -12,17 +12,17 @@ class LocationAdmin(admin.ModelAdmin):
 admin.site.register(Location, LocationAdmin)
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'event_date', 'start_time', 'location', 'publish')
+    list_display = ('title', 'author', 'event_date', 'start_time', 'location', 'publish', 'calendar')
     list_display_links = ('title', )
-    list_filter = ('event_date', 'publish', 'author', 'location')
+    list_filter = ('event_date', 'publish', 'author', 'location', 'calendar')
 
     date_hierarchy = 'event_date'
     
     prepopulated_fields = {"slug": ("title",)}
     
-    search_fields = ('title', 'location__title', 'author__username', 'author__first_name', 'author__last_name')        
+    search_fields = ('title', 'location__title', 'author__username', 'author__first_name', 'author__last_name', 'calendar')        
 
-    fieldsets =  ((None, {'fields': ['title', 'slug', 'event_date', 'start_time', 'end_time', 'location', 'description',]}),
+    fieldsets =  ((None, {'fields': ['title', 'slug', 'event_date', 'start_time', 'end_time', 'location', 'description', 'calendar',]}),
                   (_('Advanced options'), {'classes' : ('collapse',),
                                            'fields'  : ('publish_date', 'publish', 'sites', 'author', 'allow_comments')}))
     
@@ -94,3 +94,5 @@ class EventAdmin(admin.ModelAdmin):
         return super(EventAdmin, self).change_view(request, *args, **kwargs)
     
 admin.site.register(Event, EventAdmin)
+
+admin.site.register(Calendar)

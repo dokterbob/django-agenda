@@ -70,6 +70,8 @@ class Event(models.Model):
 
     description = models.TextField(_('description'))
 
+    calendar = models.ForeignKey("Calendar", blank=True, null=True, related_name='events')
+
     # Extra fields
     add_date = models.DateTimeField(_('add date'),auto_now_add=True)
     mod_date = models.DateTimeField(_('modification date'), auto_now=True)
@@ -92,3 +94,10 @@ class Event(models.Model):
                 import logging
                 logging.warn('Google ping on save did not work.')
 
+class Calendar(models.Model):
+    name = models.CharField(_('name'), max_length=100, blank=True, null=True)
+
+    def __unicode__(self):
+        if self.name:
+            return self.name
+        return _("Unnamed Calendar")
