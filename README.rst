@@ -34,6 +34,8 @@ Current
 
 Future
 ------
+- User RSVP
+- Event subscriptions / reminder e-mails (django-notify?)
 - User contributed events.
 - Repeated events
 
