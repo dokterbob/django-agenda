@@ -55,7 +55,7 @@ def get_object_context(queryset, date_field, year, month=None, day=None, slug=No
     logging.debug('Returning context %s' % object_context)
 
     if slug:
-        objects = objects.filter(slug_contains=slug)
+        objects = objects.filter(slug__contains=slug)
     logging.debug('Returning context %s' % object_context)
     return objects, object_context
     
