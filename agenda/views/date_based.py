@@ -23,14 +23,15 @@ def get_object_context(queryset, date_field, year, month=None, day=None, slug=No
     
     object_context = { 'years' : objects.dates(date_field, 'year') }
     
-    year = int(year)
-    objects = objects.filter(**{'%s__year' % date_field : year })
+    if year:
+        year = int(year)
+        objects = objects.filter(**{'%s__year' % date_field : year })
     
-    object_context.update({'months'         : objects.dates(date_field, 'month'),
-                           'year'           : year,
-                           'previous_year'  : year-1,
-                           'next_year'      : year+1,
-                           'days'           : objects.dates(date_field, 'day') })
+        object_context.update({'months'         : objects.dates(date_field, 'month'),
+                               'year'           : year,
+                               'previous_year'  : year-1,
+                               'next_year'      : year+1,
+                               'days'           : objects.dates(date_field, 'day') })
     logging.debug('Returning context %s' % object_context)
 
     if month:
@@ -112,9 +113,9 @@ def index(request, queryset, date_field,
     
     now = datetime.now()      
     queryset = queryset.filter(event_date__gte=now - timedelta(days=1))
-    
+    logging.debug(queryset)
     return archive(request, queryset, date_field, 
-                   now.year, now.month, None, 
+                   None, None, None, 
                    template_name, template_object_name, template_loader,
                    num_objects, extra_context, True,
                    mimetype, context_processors)
