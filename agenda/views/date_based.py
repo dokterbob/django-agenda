@@ -89,7 +89,7 @@ def archive(request, queryset, date_field,
         template_name = "%s/%s_archive.html" % (model._meta.app_label, model._meta.object_name.lower())
 
     # Get relevant context (objects and dates)
-    objects, object_context = get_object_context(queryset, date_field, year, month, day, slug)
+    objects, object_context = get_object_context(queryset, date_field, year, month, day)
     if not objects and not allow_empty:
         raise Http404, "No %s available" % model._meta.verbose_name
     
