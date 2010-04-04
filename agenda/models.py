@@ -76,7 +76,7 @@ class Event(models.Model):
     add_date = models.DateTimeField(_('add date'),auto_now_add=True)
     mod_date = models.DateTimeField(_('modification date'), auto_now=True)
     
-    author = models.ForeignKey(User, verbose_name=_('author'), db_index=True)
+    author = models.ForeignKey(User, verbose_name=_('author'), db_index=True, blank=True, null=True)
 
     publish_date = models.DateTimeField(_('publication date'), default=datetime.now())
     publish = models.BooleanField(_('publish'), default=True)
