@@ -3,5 +3,5 @@
 .DS_Store
 *.sqlite
 *.sw?
-demo/media
-
+*.egg-info
+dist
