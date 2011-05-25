@@ -121,4 +121,4 @@ msgstr "calendários"
 
 #: models.py:107
 msgid "Unnamed Calendar"
-msgstr "Calentário sem nome"
+msgstr "Calendário sem nome"
