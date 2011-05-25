@@ -1,0 +1,124 @@
+# PT_BR TRANSLATION
+# Copyright (C) 2011
+# This file is distributed under the same license as the PACKAGE package.
+# MARCOS DANIEL PETRY <marcospetry@gmail.com>, 2011.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Django\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-22 21:03+0100\n"
+"PO-Revision-Date: 2011-05-23 18:44+0000\n"
+"Last-Translator: Marcos Daniel Petry <marcospetry@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: admin.py:26
+msgid "Advanced options"
+msgstr "Opções Avançadas"
+
+#: feeds.py:14
+#, python-format
+msgid "%s agenda"
+msgstr "agenda %s"
+
+#: feeds.py:15
+msgid "Upcoming events in the agenda."
+msgstr "Próximos eventos no calendário."
+
+#: models.py:19
+msgid "location"
+msgstr "local"
+
+#: models.py:20
+msgid "locations"
+msgstr "locais"
+
+#: models.py:26 models.py:61
+msgid "title"
+msgstr "título"
+
+#: models.py:27 models.py:62
+msgid "slug"
+msgstr "slug"
+
+#: models.py:29
+msgid "address"
+msgstr "endereço"
+
+#: models.py:37
+msgid "event"
+msgstr "evento"
+
+#: models.py:38
+msgid "events"
+msgstr "eventos"
+
+#: models.py:41
+msgid "Change author"
+msgstr "Alterar autor"
+
+#: models.py:45
+#, python-format
+msgid "%(title)s on %(event_date)s"
+msgstr "%(title)s em %(event_date)s"
+
+#: models.py:64
+msgid "date"
+msgstr "data"
+
+#: models.py:66
+msgid "start time"
+msgstr "inicio"
+
+#: models.py:67
+msgid "end time"
+msgstr "fim"
+
+#: models.py:71
+msgid "description"
+msgstr "descrição"
+
+#: models.py:76
+msgid "add date"
+msgstr "adicionar data"
+
+#: models.py:77
+msgid "modification date"
+msgstr "data de modificação"
+
+#: models.py:79
+msgid "author"
+msgstr "autor"
+
+#: models.py:81
+msgid "publication date"
+msgstr "data de publicação"
+
+#: models.py:82
+msgid "publish"
+msgstr "publicar"
+
+#: models.py:84
+msgid "Allow comments"
+msgstr "Habilitar comentários"
+
+#: models.py:98
+msgid "name"
+msgstr "nome"
+
+#: models.py:101
+msgid "calendar"
+msgstr "calendário"
+
+#: models.py:102
+msgid "calendars"
+msgstr "calendários"
+
+#: models.py:107
+msgid "Unnamed Calendar"
+msgstr "Calendário sem nome"

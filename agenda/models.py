@@ -97,6 +97,10 @@ class Event(models.Model):
 class Calendar(models.Model):
     name = models.CharField(_('name'), max_length=100, blank=True, null=True)
 
+    class Meta:
+        verbose_name = _('calendar')
+        verbose_name_plural = _('calendars')
+
     def __unicode__(self):
         if self.name:
             return self.name
