@@ -10,10 +10,8 @@ with events.
 
 Status
 ======
-Django-agenda is currently stable enough for beta testing.
-As much as I would love people using it right now, I have not
-taken it into production myself and therefore would not swear
-over its stability.
+This software package is currently not maintained. However, it is used in several production environments. 
+Should you wish to acquire maintainership over this project, please open up an issue with your request.
 
 Feautures
 =========
